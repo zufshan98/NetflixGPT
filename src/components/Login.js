@@ -7,7 +7,7 @@ const Login = () => {
   const [isSignInForm, setIsSignInForm] = useState(true);
   const [errorMessage, SetErrorMessage] = useState(null);
 
-  const name = useRef(null);
+  //const name = useRef(null);
   const email = useRef(null);
   const password = useRef(null);
 
@@ -20,7 +20,7 @@ const Login = () => {
     //console.log(email.current.value);
     //console.log(password.current.value);
 
-    const message = checkValidData(name.current.value, email.current.value, password.current.value);
+    const message = checkValidData(email.current.value, password.current.value);
     SetErrorMessage(message);
     //console.log(message);
   };
@@ -40,7 +40,7 @@ const Login = () => {
         <h1 className='font-bold text-3xl py-4'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
 
         {!isSignInForm && (
-        <input ref={name} type='text' placeholder='Full Name' className='p-4 my-4 w-full bg-gray-700'></input>)}
+        <input type='text' placeholder='Full Name' className='p-4 my-4 w-full bg-gray-700'></input>)}
 
         <input ref={email} type='text' placeholder='Email Address' className='p-4 my-4 w-full bg-gray-700'></input>
 
