@@ -1,0 +1,41 @@
+import { useState } from 'react'
+import Header from './Header'
+
+const Login = () => {
+
+  const [isSignInForm, setIsSignInForm] = useState(true);
+
+  const toggleForm = () => {
+    setIsSignInForm(!isSignInForm);
+  };
+  return (
+    <div className=''>
+      <Header />
+
+      <div className='relative h-screen'>
+        <img className='absolute inset-0 h-full w-full object-cover'
+         src='https://assets.nflxext.com/ffe/siteui/vlv3/435e8bb8-7f1b-49cb-8da8-bff997124294/web/IN-en-20260511-TRIFECTA-perspective_ec39852e-0b48-4e8a-b415-dd8376cd83ce_large.jpg' alt='login-bg'/>    
+      </div>
+
+      <div className='absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/50'></div>
+
+      <form className='bg-black/70 absolute p-12 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/12 text-white rounded-lg '>
+        <h1 className='font-bold text-3xl py-4'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
+
+        {!isSignInForm && (
+        <input type='text' placeholder='Full Name' className='p-4 my-4 w-full bg-gray-700'></input>)}
+
+        <input type='text' placeholder='Email Address' className='p-4 my-4 w-full bg-gray-700'></input>
+
+        <input type='password' placeholder='Password' className='p-4 my-4 w-full bg-gray-700'></input>
+
+        <button className='p-4 my-6 bg-red-600 w-full rounded-lg'>{isSignInForm ? "Sign In" : "Sign Up"}</button>
+
+        <p className='py-4'>{isSignInForm ? "New to Netflix?" : "Already registered?"}<span className='font-bold cursor-pointer hover:underline' onClick={toggleForm}> {isSignInForm ? "Sign Up Now" : "Sign In Now"}</span></p>
+      </form>
+      
+    </div>
+  )
+}
+
+export default Login
