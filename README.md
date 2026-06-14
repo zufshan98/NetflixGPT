@@ -74,6 +74,24 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -Create React App
 -Install and configure tailwindcss
 -Add tailwind to index.css
+-Header
+-Routing of App
+-Login form & sign up form switch using useState
+-Form Validation using RegEx
+-useRef hook for the reference(to get data from the input boxes)
+-Firebase setup
+-Deploying our app to production
+-Create user account by signing up
+-Implementing sign in user api
+-Create Redux store with userSlice to store the user info
+-Implemented sign out
+-Update profile
+-BugFix: After sign up, displayName and profile picture is updated
+-BugFix: if the user is not logged in, prevent from accessing the browse page & when logged in, prevent from accessing the sign-in page
+-Unsubscibed to the onAuthStateChanged callback
+-Add hardcoded values(img urls) to the constants file
+-Register TMDB API & create an app there - get access token
+-Make an API call to get date from TMDB - now playing movies list
 
 # Features
 

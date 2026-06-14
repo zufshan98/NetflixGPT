@@ -5,6 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
+import { USER_AVATAR } from '../utils/constants';
 
 const Login = () => {
 
@@ -41,7 +42,7 @@ const Login = () => {
           const user = userCredential.user;
           //console.log(user);
           updateProfile(user, {
-            displayName: name.current.value, photoURL:"https://occ-0-6245-2164.1.nflxso.net/dnm/api/v6/SO2HoVCx33X8phZh2pZZmQ4QgNY/AAAABQuNDH5FZ72EMJV-0VwFVP3_JnEG0VNu2A0XWrrfcCxe1jhxpXij5skoNeAOGG3izZMo_qVMAPc7l-Or17JKPNQfn_Wv9fw.png?r=7bc",
+            displayName: name.current.value, photoURL: USER_AVATAR,
           })
             .then(() => {
               // Profile updated!
