@@ -92,6 +92,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -Add hardcoded values(img urls) to the constants file
 -Register TMDB API & create an app there - get access token
 -Make an API call to get date from TMDB - now playing movies list
+-Created movieSlice(store) to store the movies data
+-Created a custom hook(hook/useNowPlayingMovies)- to make API calls & to update the fetched data in the store
 
 # Features
 
