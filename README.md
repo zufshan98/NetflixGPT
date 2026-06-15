@@ -90,10 +90,15 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 -BugFix: if the user is not logged in, prevent from accessing the browse page & when logged in, prevent from accessing the sign-in page
 -Unsubscibed to the onAuthStateChanged callback
 -Add hardcoded values(img urls) to the constants file
--Register TMDB API & create an app there - get access token
--Make an API call to get date from TMDB - now playing movies list
+-Register TMDB API & create an app there -> get access token
+-Make an API call to get date from TMDB -> now playing movies list
 -Created movieSlice(store) to store the movies data
--Created a custom hook(hook/useNowPlayingMovies)- to make API calls & to update the fetched data in the store
+-Created a custom hook(hook/useNowPlayingMovies)-> to make API calls to fetch 'now playing movie list' from TMDB & to update the fetched data in the store
+-Planned the Browse page, 2 sections-> Hero movie container and secondary container
+-Created Hero movie container -> MovieTitle and MovieBackground(Trailer Video)
+
+- Made custom hook(hook/useMovieTrailer) -> to fetch the movie trailer & update the store with trailer video data
+  -Embedded trailer video from the youtube to our MovieBackground(with autoplay&mute)
 
 # Features
 
