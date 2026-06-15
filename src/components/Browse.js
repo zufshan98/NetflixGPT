@@ -13,8 +13,7 @@ const Browse = () => {
       <Header />
       <HeroMovieContainer />
       <SecondaryContainer />
-      {/**movies list x n */}
-      {/**movie cards x n */}
+      
     </div>
   );
 };

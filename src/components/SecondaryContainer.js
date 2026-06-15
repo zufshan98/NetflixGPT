@@ -2,7 +2,8 @@
 const SecondaryContainer = () => {
   return (
     <div>
-      SecondaryContainer
+      {/**movies list x n */}
+      {/**movie cards x n */}
     </div>
   );
 };
