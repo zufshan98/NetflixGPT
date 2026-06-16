@@ -10,7 +10,7 @@ const useOnTheAirTvSeries = () => {
   const getOnTheAirTvSeries = async () => {
     const data = await fetch('https://api.themoviedb.org/3/tv/on_the_air?page=1', API_OPTIONS);
     const json = await data.json();
-    console.log(json.results);
+    //console.log(json.results);
     //storing the fetched data in the moviesSlice(store)
     dispatch(addOnTheAirTvSeries(json.results));
   };
