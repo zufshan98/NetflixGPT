@@ -102,6 +102,11 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Fetched Image CDN URL from the TMDB for MovieCard
 - Created multilple custom hooks to built different categories of movie list (e.g. usePopularMovies to fetch a list of popular movies data from TMDB & stored it in the movieSlice) [called custom hook in Browse.js]
 - In the SecondaryContainer -> subscribed to the stored store to use the data in MovieList
+- Created GptSearchContainer -> GptSearchBar and GptMovieSuggestions
+- (BONUS) Integrated multi language feature in the Gpt Search Page.
+- Stored languages in the languageConstant
+- Made a dropdown menu in gpt search page to select preferred language & stored the selected language in the configSlice.
+- Subscribed to the store in GptSearchBar to get the selected language & dynamically changed the language
 
 # Features
 
