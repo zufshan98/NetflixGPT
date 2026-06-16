@@ -5,7 +5,7 @@ import { createUserWithEmailAndPassword, signInWithEmailAndPassword, updateProfi
 import { auth } from '../utils/firebase';
 import { useDispatch } from 'react-redux';
 import { addUser } from '../utils/userSlice';
-import { USER_AVATAR } from '../utils/constants';
+import { BG_URL, USER_AVATAR } from '../utils/constants';
 
 const Login = () => {
 
@@ -85,12 +85,12 @@ const Login = () => {
 
       <div className='relative h-screen'>
         <img className='absolute inset-0 h-full w-full object-cover'
-         src='https://assets.nflxext.com/ffe/siteui/vlv3/435e8bb8-7f1b-49cb-8da8-bff997124294/web/IN-en-20260511-TRIFECTA-perspective_ec39852e-0b48-4e8a-b415-dd8376cd83ce_large.jpg' alt='login-bg'/>    
+         src={BG_URL} alt='login-bg'/>    
       </div>
 
       <div className='absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/50'></div>
 
-      <form onSubmit={(e) => e.preventDefault()} className='bg-black/70 absolute p-12 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/12 text-white rounded-lg '>
+      <form onSubmit={(e) => e.preventDefault()} className='bg-black/60 absolute p-12 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/12 text-white rounded-lg '>
         <h1 className='font-bold text-3xl py-4'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
 
         {!isSignInForm && (

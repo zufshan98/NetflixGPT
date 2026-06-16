@@ -98,6 +98,10 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Created Hero movie container -> MovieTitle and MovieBackground(Trailer Video)
 - Made custom hook(hook/useMovieTrailer) -> to fetch the movie trailer & update the store with trailer video data
 - Embedded trailer video from the youtube to our MovieBackground(with autoplay&mute)
+- Create Secondary container -> MovieList and MovieCard
+- Fetched Image CDN URL from the TMDB for MovieCard
+- Created multilple custom hooks to built different categories of movie list (e.g. usePopularMovies to fetch a list of popular movies data from TMDB & stored it in the movieSlice) [called custom hook in Browse.js]
+- In the SecondaryContainer -> subscribed to the stored store to use the data in MovieList
 
 # Features
 

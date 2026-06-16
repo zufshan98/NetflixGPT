@@ -1,3 +1,4 @@
+import { useSelector } from 'react-redux';
 import useHighlyRecommendedKoreanMovies from '../hooks/useHighlyRecommendedKoreanMovies';
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
 import useOnTheAirTvSeries from '../hooks/useOnTheAirTvSeries';
@@ -7,9 +8,12 @@ import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import Header from './Header';
 import HeroMovieContainer from './HeroMovieContainer';
 import SecondaryContainer from './SecondaryContainer';
+import GptSearchContainer from './GptSearchContainer';
 
 
 const Browse = () => {
+
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   
   useHighlyRecommendedKoreanMovies();
   useRecentlyAddedKdramas();
@@ -21,8 +25,14 @@ const Browse = () => {
   return (
     <div className='overflow-x-hidden'>
       <Header />
-      <HeroMovieContainer />
-      <SecondaryContainer />
+      {showGptSearch ? (
+        <GptSearchContainer />
+      ) : (
+        <>
+          <HeroMovieContainer />
+          <SecondaryContainer />
+        </>
+      )}
       
     </div>
   );
