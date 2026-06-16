@@ -4,8 +4,8 @@ import MovieBackground from "./MovieBackground";
 
 
 const HeroMovieContainer = () => {
-
-  const movies = useSelector(store => store?.movies?.nowPlayingMovies);
+  //getting now playing movies data from the store
+  const movies = useSelector((store) => store?.movies?.nowPlayingMovies);
 
   //1st time the nowPlayingMovies is null, if its null then dont render 
   if(movies === null) return; //early return (!movies)
@@ -16,7 +16,7 @@ const HeroMovieContainer = () => {
   const { original_title, overview, id } = heroMovie;
 
   return (
-    <div>
+    <div className="relative h-screen overflow-hidden">
 
       <MovieTitle title={original_title} overview={overview} />
       <MovieBackground movie_id={id} />

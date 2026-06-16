@@ -2,7 +2,7 @@
 
 const MovieTitle = ({title, overview}) => {
   return (
-    <div className="absolute p-16 pt-72 flex flex-col gap-5 text-white">
+    <div className="absolute z-10 p-16 pt-72 flex flex-col gap-5 text-white">
       <h1 className="text-8xl font-bold font-serif">{title}</h1>
       <p className="w-5/12 text-lg">{overview}</p>
 
