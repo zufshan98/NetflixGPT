@@ -5,7 +5,7 @@ export const BG_URL = "https://assets.nflxext.com/ffe/siteui/vlv3/435e8bb8-7f1b-
 export const USER_AVATAR = "https://occ-0-6245-2164.1.nflxso.net/dnm/api/v6/SO2HoVCx33X8phZh2pZZmQ4QgNY/AAAABQuNDH5FZ72EMJV-0VwFVP3_JnEG0VNu2A0XWrrfcCxe1jhxpXij5skoNeAOGG3izZMo_qVMAPc7l-Or17JKPNQfn_Wv9fw.png?r=7bc";
 
 export const API_OPTIONS = {
-  method: 'GET',
+    method: 'GET',
   headers: {
     accept: 'application/json',
     Authorization: 'Bearer ' + process.env.REACT_APP_TMDB_KEY,
@@ -20,5 +20,4 @@ export const SUPPORTED_LANGUAGES = [
   {identifier: "ko", name: "Korean"},
   {identifier: "ja", name: "Japanese"},
 ];
-
 export const GROQ_API_KEY = process.env.REACT_APP_GROQ_API_KEY;
