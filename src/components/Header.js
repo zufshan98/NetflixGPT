@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { addUser, removeUser } from '../utils/userSlice';
 import { LOGO, SUPPORTED_LANGUAGES } from '../utils/constants';
-import { toggleGeminiSearchView } from '../utils/geminiSlice';
+import { toggleGptSearchView } from '../utils/gptSlice';
 import { changeLanguage } from '../utils/configSlice';
 
 const Header = () => {
@@ -16,7 +16,7 @@ const Header = () => {
 
   const user = useSelector(store => store.user);
 
-  const showGeminiSearch = useSelector((store) => store.gemini.showGeminiSearch);
+  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -46,9 +46,9 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
-  const handleGeminiSearchClick = () => {
+  const handleGptSearchClick = () => {
     //Toggle GPT Search
-    dispatch(toggleGeminiSearchView());
+    dispatch(toggleGptSearchView());
   };
 
   const handleLanguageChange = (e) => {
@@ -67,17 +67,17 @@ const Header = () => {
       {user && (
         <div className='flex items-center justify-center gap-8 px-16'>
 
-          {showGeminiSearch && (
+          {showGptSearch && (
             <select className='font-sans bg-transparent text-white border border-black/70 rounded-md' onChange={handleLanguageChange}>
               {SUPPORTED_LANGUAGES.map((lang) => (
-                <option key={lang.identifier} value={lang.identifier}>
+                <option className='bg-white text-black' key={lang.identifier} value={lang.identifier}>
                   {lang.name}
                 </option>
               ))}   
             </select>
           )}
 
-          <button className=' text-white rounded-lg font-sans hover:text-white/60' onClick={handleGeminiSearchClick}>{showGeminiSearch ? "Home" : "Gemini Search"}</button>
+          <button className=' text-white rounded-lg font-sans hover:text-white/60' onClick={handleGptSearchClick}>{showGptSearch ? "Home" : "Gpt Search"}</button>
 
           <img className='w-9 rounded-lg' src={user?.photoURL} alt='usericon' />
 

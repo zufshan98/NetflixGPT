@@ -4,6 +4,7 @@ const moviesSlice = createSlice({
     name:"movies",
     initialState: {
         highlyRecommendedKoreanMovies: null,
+        highlyRecommendedKoreanMoviesPosters
         recentlyAddedKdramas: null,
         nowPlayingMovies: null,
         movieLogo: null,

@@ -4,7 +4,7 @@ import { IMG_CDN_URL } from "../utils/constants";
 
 const MovieTitle = ({movie_id, title, overview}) => {
 
-  const movieLogo = useSelector(store => store.movies?.movieLogo); //getting trailer from the store
+  const movieLogo = useSelector(store => store.movies?.movieLogo); //getting logo of the trailer from the store
 
   useMovieLogo(movie_id);
 
