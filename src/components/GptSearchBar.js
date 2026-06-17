@@ -36,12 +36,6 @@ const GptSearchBar = () => {
     });
     console.log(gptResults.choices[0]?.message?.content || " ");
 
-  
-    /**const geminiResults = await geminiai.models.generateContent({
-      model: "gemini-3.5-flash",
-      contents: geminiQuery,
-    });*/
-
     if(!gptResults) {
       //TO DO : Write Error Handling
     }
