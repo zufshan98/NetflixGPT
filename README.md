@@ -107,6 +107,8 @@ This section has moved here: [https://facebook.github.io/create-react-app/docs/t
 - Stored languages in the languageConstant
 - Made a dropdown menu in gpt search page to select preferred language & stored the selected language in the configSlice.
 - Subscribed to the store in GptSearchBar to get the selected language & dynamically changed the language
+- Got Open AI Api Key from Platform.openai.com
+- Installed package -> npm install openai
 
 # Features
 

@@ -8,12 +8,12 @@ import useTopRatedMovies from '../hooks/useTopRatedMovies';
 import Header from './Header';
 import HeroMovieContainer from './HeroMovieContainer';
 import SecondaryContainer from './SecondaryContainer';
-import GptSearchContainer from './GptSearchContainer';
+import GeminiSearchContainer from './GeminiSearchContainer';
 
 
 const Browse = () => {
 
-  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const showGeminiSearch = useSelector((store) => store.gemini.showGeminiSearch);
   
   useHighlyRecommendedKoreanMovies();
   useRecentlyAddedKdramas();
@@ -25,8 +25,8 @@ const Browse = () => {
   return (
     <div className='overflow-x-hidden'>
       <Header />
-      {showGptSearch ? (
-        <GptSearchContainer />
+      {showGeminiSearch ? (
+        <GeminiSearchContainer />
       ) : (
         <>
           <HeroMovieContainer />

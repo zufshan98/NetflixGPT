@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { addUser, removeUser } from '../utils/userSlice';
 import { LOGO, SUPPORTED_LANGUAGES } from '../utils/constants';
-import { toggleGptSearchView } from '../utils/gptSlice';
+import { toggleGeminiSearchView } from '../utils/geminiSlice';
 import { changeLanguage } from '../utils/configSlice';
 
 const Header = () => {
@@ -16,7 +16,7 @@ const Header = () => {
 
   const user = useSelector(store => store.user);
 
-  const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const showGeminiSearch = useSelector((store) => store.gemini.showGeminiSearch);
 
   const handleSignOut = () => {
     signOut(auth)
@@ -46,9 +46,9 @@ const Header = () => {
     return () => unsubscribe();
   }, []);
 
-  const handleGptSearchClick = () => {
+  const handleGeminiSearchClick = () => {
     //Toggle GPT Search
-    dispatch(toggleGptSearchView());
+    dispatch(toggleGeminiSearchView());
   };
 
   const handleLanguageChange = (e) => {
@@ -67,7 +67,7 @@ const Header = () => {
       {user && (
         <div className='flex items-center justify-center gap-8 px-16'>
 
-          {showGptSearch && (
+          {showGeminiSearch && (
             <select className='font-sans bg-transparent text-white border border-black/70 rounded-md' onChange={handleLanguageChange}>
               {SUPPORTED_LANGUAGES.map((lang) => (
                 <option key={lang.identifier} value={lang.identifier}>
@@ -77,7 +77,7 @@ const Header = () => {
             </select>
           )}
 
-          <button className=' text-white rounded-lg font-sans hover:text-white/60' onClick={handleGptSearchClick}>{showGptSearch ? "Home" : "GPT Search"}</button>
+          <button className=' text-white rounded-lg font-sans hover:text-white/60' onClick={handleGeminiSearchClick}>{showGeminiSearch ? "Home" : "Gemini Search"}</button>
 
           <img className='w-9 rounded-lg' src={user?.photoURL} alt='usericon' />
 

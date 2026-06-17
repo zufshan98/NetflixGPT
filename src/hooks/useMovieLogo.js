@@ -7,7 +7,7 @@ const useMovieLogo = (movie_id) => {
 
     const dispatch = useDispatch();
 
-    console.log(movie_id);
+    //console.log(movie_id);
 
     //fetch movie logo && updating the store with image data
     const getMovieLogo = async () => {

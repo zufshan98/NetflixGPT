@@ -20,3 +20,5 @@ export const SUPPORTED_LANGUAGES = [
   {identifier: "ko", name: "Korean"},
   {identifier: "ja", name: "Japanese"},
 ];
+
+export const GEMINI_API_KEY = "AQ.Ab8RN6L3Fg0blrPhyqzmAvyewLTuXskr9KJVsAPrWnTp4ySmzA";

@@ -11,7 +11,7 @@ const HeroMovieContainer = () => {
   if(movies === null) return; //early return (!movies)
 
   const heroMovie = movies[0]; //1st movie in the list
-  console.log(heroMovie);
+  //console.log(heroMovie);
 
   const { name, overview, id } = heroMovie;
 
