@@ -1,5 +1,6 @@
 import { useSelector } from "react-redux";
 import useMovieTrailer from "../hooks/useMovieTrailer";
+import useMovieBackdrop from "../hooks/useMovieBackdrop";
 
 
 const MovieBackground = ({movie_id}) => {
@@ -7,6 +8,7 @@ const MovieBackground = ({movie_id}) => {
   const trailerVideo = useSelector(store => store.movies?.trailerVideo); //getting trailer from the store
 
   useMovieTrailer(movie_id);
+  useMovieBackdrop(movie_id);
 
   return (
     <div className="h-screen w-screen overflow-hidden pointer-events-none">
