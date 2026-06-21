@@ -5,7 +5,7 @@ import MovieBackground from "./MovieBackground";
 
 const HeroMovieContainer = () => {
   //getting the first row of movie list data from the store
-  const movies = useSelector((store) => store?.movies?.highlyRecommendedKoreanMovies);
+  const movies = useSelector((store) => store?.movies?.kpopMovies);
 
   //1st time the nowPlayingMovies is null, if its null then dont render 
   if(movies === null) return; //early return (!movies)

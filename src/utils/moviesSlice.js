@@ -3,19 +3,23 @@ import { createSlice } from "@reduxjs/toolkit";
 const moviesSlice = createSlice({
     name:"movies",
     initialState: {
-        highlyRecommendedKoreanMovies: null,
+        eastAsianMovies: null,
+        kpopMovies: null,
         recentlyAddedKdramas: null,
         nowPlayingMovies: null,
         movieLogo: null,
         movieBackdrop:null,
-        trailerVideo: null,
+        trailerVideo: {},
         topRatedMovies: null,
         popularKdramas: null,
         onTheAirTvSeries: null,
     },
     reducers: {
-        addHighlyRecommendedKoreanMovies: (state, action) => {
-            state.highlyRecommendedKoreanMovies = action.payload;
+        addKpopMovies: (state, action) => {
+            state.kpopMovies = action.payload;
+        },
+        addEastAsianMovies: (state, action) => {
+            state.eastAsianMovies = action.payload;
         },
         addRecentlyAddedKdramas: (state, action) => {
             state.recentlyAddedKdramas = action.payload;
@@ -30,7 +34,8 @@ const moviesSlice = createSlice({
             state.movieBackdrop = action.payload;
         },
         addTrailerVideo: (state, action) => {
-            state.trailerVideo = action.payload;
+            const { movie_id, trailer} = action.payload;
+            state.trailerVideo[movie_id] = trailer;
         },
         addTopRatedMovies: (state, action) => {
             state.topRatedMovies = action.payload;
@@ -44,5 +49,5 @@ const moviesSlice = createSlice({
     },
 });
 
-export const { addHighlyRecommendedKoreanMovies, addRecentlyAddedKdramas, addNowPlayingMovies, addMovieBackdrop, addMovieLogo, addTrailerVideo, addTopRatedMovies, addPopularKdramas, addOnTheAirTvSeries } = moviesSlice.actions;
+export const { addKpopMovies, addEastAsianMovies, addRecentlyAddedKdramas, addNowPlayingMovies, addMovieBackdrop, addMovieLogo, addTrailerVideo, addTopRatedMovies, addPopularKdramas, addOnTheAirTvSeries } = moviesSlice.actions;
 export default moviesSlice.reducer;

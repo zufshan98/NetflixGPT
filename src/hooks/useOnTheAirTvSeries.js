@@ -8,11 +8,18 @@ const useOnTheAirTvSeries = () => {
   const dispatch = useDispatch();
 
   const getOnTheAirTvSeries = async () => {
-    const data = await fetch('https://api.themoviedb.org/3/tv/on_the_air?page=1', API_OPTIONS);
-    const json = await data.json();
-    //console.log(json.results);
+
+    let allMovies = [];
+
+    for (let page = 1; page < 3; page++) {
+      const data = await fetch(`https://api.themoviedb.org/3/tv/on_the_air?page=${page}`, API_OPTIONS);
+      const json = await data.json();
+      //console.log(json.results);
+      allMovies = [...allMovies, ...json.results];
+    }
+    
     //storing the fetched data in the moviesSlice(store)
-    dispatch(addOnTheAirTvSeries(json.results));
+    dispatch(addOnTheAirTvSeries(allMovies.slice(0, 30)));
   };
 
   useEffect(() => {

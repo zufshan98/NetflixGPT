@@ -8,11 +8,18 @@ const useRecentlyAddedKdramas = () => {
   const dispatch = useDispatch();
 
   const getRecentlyAddedKdramas = async () => {
-    const data = await fetch('https://api.themoviedb.org/3/discover/tv?first_air_date_year=2026&include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_origin_country=KR', API_OPTIONS);
-    const json = await data.json();
-    //console.log(json.results);
+
+    let allMovies = [];
+
+    for (let page = 1; page < 3; page++) {
+      const data = await fetch(`https://api.themoviedb.org/3/discover/tv?first_air_date_year=2026&include_adult=false&include_null_first_air_dates=false&language=en-US&page=${page}&sort_by=popularity.desc&with_origin_country=KR`, API_OPTIONS);
+      const json = await data.json();
+      //console.log(json.results);
+      allMovies = [...allMovies, ...json.results];
+    }
+    
     //storing the fetched data in the moviesSlice(store)
-    dispatch(addRecentlyAddedKdramas(json.results));
+    dispatch(addRecentlyAddedKdramas(allMovies.slice(0, 30)));
   };
 
   useEffect(() => {

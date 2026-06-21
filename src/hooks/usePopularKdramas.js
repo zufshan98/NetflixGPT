@@ -8,11 +8,17 @@ const usePopularKdramas = () => {
   const dispatch = useDispatch();
 
   const getPopularKdramas = async () => {
-    const data = await fetch('https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=2&sort_by=popularity.desc&vote_average.gte=8&with_origin_country=KR', API_OPTIONS);
-    const json = await data.json();
-    //console.log(json.results);
+
+    let allMovies = [];
+
+    for (let page = 1; page < 3; page++) {
+      const data = await fetch(`https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=${page}&sort_by=popularity.desc&vote_average.gte=8&with_origin_country=KR&without_genres=10767%20%7C%2010764`, API_OPTIONS);
+      const json = await data.json();
+      //console.log(json.results);
+      allMovies = [...allMovies, ...json.results];
+    }
     //storing the fetched data in the moviesSlice(store)
-    dispatch(addPopularKdramas(json.results));
+    dispatch(addPopularKdramas(allMovies.slice(0, 30)));
   };
 
   useEffect(() => {

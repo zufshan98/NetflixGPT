@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import useHighlyRecommendedKoreanMovies from '../hooks/useHighlyRecommendedKoreanMovies';
+import useEastAsianMovies from '../hooks/useEastAsianMovies';
 import useNowPlayingMovies from '../hooks/useNowPlayingMovies';
 import useOnTheAirTvSeries from '../hooks/useOnTheAirTvSeries';
 import usePopularKdramas from '../hooks/usePopularKdramas';
@@ -9,13 +9,15 @@ import Header from './Header';
 import HeroMovieContainer from './HeroMovieContainer';
 import SecondaryContainer from './SecondaryContainer';
 import GptSearchContainer from './GptSearchContainer';
+import useKpopMovies from '../hooks/useKpopMovies';
 
 
 const Browse = () => {
 
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   
-  useHighlyRecommendedKoreanMovies();
+  useKpopMovies();
+  useEastAsianMovies();
   useRecentlyAddedKdramas();
   useNowPlayingMovies();
   useTopRatedMovies();
