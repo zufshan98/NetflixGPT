@@ -5,9 +5,15 @@ const MovieList = ({typeId, title, movies }) => {
   //console.log(movies);
 
   //if(!movies) return; //early return (movies===null)
-  const [currentPage, setCurrentPage] = useState(0);
-  const [translateX, setTranslateX] = useState(0);
- 
+  const [currentPage, setCurrentPage] = useState(0); //To stop the scroll when there is no card.
+  const [translateX, setTranslateX] = useState(0); //For horizontal scroll upon clicking
+
+  //For the alignment of MovieInfoCard upon hover
+  const visibleCount = 6;
+
+  const firstVisibleIndex = currentPage * visibleCount;
+  const lastVisibleIndex = firstVisibleIndex + visibleCount - 1;
+  
   const scrollRight = () => {
     if (currentPage >= 4) return;
 
@@ -25,7 +31,7 @@ const MovieList = ({typeId, title, movies }) => {
 
   return (
     <div className='mb-6 relative group overflow-visible'>
-      <h1 className='text-2xl/6 font-bold py-3 pl-1 text-white'>{title}</h1>
+      <h1 className='relative -z-10 text-2xl/6 font-bold py-3 pl-1 text-white'>{title}</h1>
 
       <button onClick={scrollLeft} className={`${currentPage === 0 ? "hidden" : "group-hover:block"} absolute -left-14 top-12 h-[134px] w-[56px] bg-black/50 text-white z-[9999]`}>
         <span className="material-symbols-outlined text-6xl">keyboard_arrow_left</span>
@@ -33,7 +39,19 @@ const MovieList = ({typeId, title, movies }) => {
 
       <div className='overflow-visible'>
         <div className='flex gap-1 transition-transform duration-500' style={{transform: `translateX(${translateX}px)`}}>  
-          {movies?.map((movie, index) => <MovieCard key={movie.id} index={index} totalMovies={movies.length} typeId={typeId} movie_id={movie.id} posterPath={movie.poster_path} />)}
+
+          {movies?.map((movie, index) => (
+            <MovieCard 
+              key={movie.id} 
+              index={index} 
+              firstVisibleIndex={firstVisibleIndex}
+              lastVisibleIndex={lastVisibleIndex}
+              typeId={typeId} 
+              movie_id={movie.id} 
+              posterPath={movie.poster_path}
+            />
+          ))}
+          
         </div>
       </div>
     

@@ -3,9 +3,19 @@ import useMovieBackdrop from '../hooks/useMovieBackdrop';
 import { IMG_CDN_URL } from '../utils/constants'
 import MovieInfoCard from './MovieInfoCard';
 
-const MovieCard = ({typeId, movie_id, posterPath}) => {
+const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex,typeId, movie_id, posterPath}) => {
 
   const [hover, setHover] = useState(false);
+
+  let hoverPosition;
+
+  if (index === firstVisibleIndex) {
+    hoverPosition = "left-0";
+  } else if (index === lastVisibleIndex) {
+    hoverPosition = "left-1/4 -translate-x-1/2";
+  } else {
+    hoverPosition = "left-1/2 -translate-x-1/2";
+  }
 
   const backdropPath = useMovieBackdrop(typeId, movie_id);
   //console.log(backdropPath);
@@ -21,7 +31,7 @@ const MovieCard = ({typeId, movie_id, posterPath}) => {
       
 
       {hover && (
-        <div className='absolute -top-10 left-0 z-50 rounded-xl'>
+        <div className={`absolute -top-10 left-0 z-20 rounded-xl ${hoverPosition}`}>
           <MovieInfoCard movie_id={movie_id} typeId={typeId} />
         </div>
       )}
