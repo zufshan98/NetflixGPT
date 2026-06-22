@@ -10,6 +10,7 @@ const moviesSlice = createSlice({
         movieLogo: null,
         movieBackdrop:null,
         trailerVideo: {},
+        movieDetails: {},
         topRatedMovies: null,
         popularKdramas: null,
         onTheAirTvSeries: null,
@@ -37,6 +38,10 @@ const moviesSlice = createSlice({
             const { movie_id, trailer} = action.payload;
             state.trailerVideo[movie_id] = trailer;
         },
+        addMovieDetails: (state, action) => {
+            const { movie_id, details } = action.payload;
+            state.movieDetails[movie_id] = details;
+        },
         addTopRatedMovies: (state, action) => {
             state.topRatedMovies = action.payload;
         },
@@ -49,5 +54,5 @@ const moviesSlice = createSlice({
     },
 });
 
-export const { addKpopMovies, addEastAsianMovies, addRecentlyAddedKdramas, addNowPlayingMovies, addMovieBackdrop, addMovieLogo, addTrailerVideo, addTopRatedMovies, addPopularKdramas, addOnTheAirTvSeries } = moviesSlice.actions;
+export const { addKpopMovies, addEastAsianMovies, addRecentlyAddedKdramas, addNowPlayingMovies, addMovieBackdrop, addMovieLogo, addTrailerVideo, addMovieDetails, addTopRatedMovies, addPopularKdramas, addOnTheAirTvSeries } = moviesSlice.actions;
 export default moviesSlice.reducer;

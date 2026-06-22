@@ -15,9 +15,13 @@ const useRecentlyAddedKdramas = () => {
       const data = await fetch(`https://api.themoviedb.org/3/discover/tv?first_air_date_year=2026&include_adult=false&include_null_first_air_dates=false&language=en-US&page=${page}&sort_by=popularity.desc&with_origin_country=KR`, API_OPTIONS);
       const json = await data.json();
       //console.log(json.results);
-      allMovies = [...allMovies, ...json.results];
+      //There was a duplicate data, to remove the data with this id
+      const result = json.results.filter(
+        movie => movie.id !== 297712
+      );
+      allMovies = [...allMovies, ...result];
     }
-    
+    //console.log(allMovies);
     //storing the fetched data in the moviesSlice(store)
     dispatch(addRecentlyAddedKdramas(allMovies.slice(0, 30)));
   };

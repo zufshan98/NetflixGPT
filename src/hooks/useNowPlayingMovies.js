@@ -16,7 +16,11 @@ const useNowPlayingMovies = () => {
 
       const json = await data.json();
       //console.log(json.results);
-      allMovies = [...allMovies, ...json.results];
+      //There was a duplicate data, to remove the data with this id
+      const result = json.results.filter(
+        movie => movie.id !== 454639
+      );
+      allMovies = [...allMovies, ...result];
       //console.log(allMovies);
     }
     //storing the fetched data in the moviesSlice(store)

@@ -11,10 +11,10 @@ const MovieTitle = ({movie_id, title, overview}) => {
   useMovieLogo(movie_id);
 
   return (
-    <div className="absolute z-10 p-16 pt-48 flex flex-col gap-6 text-white">
+    <div className="absolute z-10 p-16 pt-64 flex flex-col gap-6 text-white">
       
       {movieLogo 
-        ? <div className="w-[308px] ">
+        ? <div className="w-[360px] ">
             <img src={IMG_CDN_URL + movieLogo?.file_path} alt="movie logo"/>
           </div>
     

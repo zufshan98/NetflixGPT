@@ -3,26 +3,48 @@ import { faCircle, faPlay } from "@fortawesome/free-solid-svg-icons";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { useSelector } from "react-redux";
 import useMovieTrailer from "../hooks/useMovieTrailer";
+import useMovieDetails from "../hooks/useMovieDetails";
+import useMovieBackdrop from "../hooks/useMovieBackdrop";
+import { IMG_CDN_URL } from "../utils/constants";
+import { useState } from "react";
 
 const MovieInfoCard = ({movie_id, typeId}) => {
 
   //console.log(movie_id, typeId);
 
+  const [loaded, setLoaded] = useState(false);
+
   const trailerVideo = useSelector(store => store.movies?.trailerVideo[movie_id]); //getting trailer from the store
-  
+  const movieDetail = useSelector(store => store.movies?.movieDetails[movie_id]);
+
   useMovieTrailer(movie_id, typeId);
+  useMovieDetails(movie_id, typeId);
+  const backdropPath = useMovieBackdrop(typeId, movie_id);
   
+  if(!movieDetail) return;
+  console.log(movieDetail.genres);
   return (
     
-    <div className="my-5 relative w-[350px] h-[350px] -top-24 rounded-xl flex flex-col">
+    <div className="my-5 relative z-80 -top-28 rounded-xl flex flex-col shadow-md shadow-black bg-red-800 bg-contain"
+      style={{
+        backgroundImage: `url(${IMG_CDN_URL + backdropPath})`,
+      }}
+    >
 
       {/**VIDEO PART*/}
-      <div className="w-full h-1/2">
-        <iframe className="w-full h-full rounded-t-xl" src={"https://www.youtube.com/embed/" + trailerVideo?.key + "?&autoplay=1&mute=1&controls=0&modestbranding=1&fs=0&start=0&end=70&loop=1&playlist=" + trailerVideo?.key + "&vq=hd1080"}  title="YouTube video player" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerPolicy="strict-origin-when-cross-origin" ></iframe>
+      <div className="w-[350px] h-[195px]">
+        <iframe  
+          onLoad={() => setLoaded(true)} 
+          className={`w-full h-full rounded-t-xl pointer-events-none transition-opacity duration-300 ${loaded ? "opacity-100" : "opacity-0"}`} 
+          src={"https://www.youtube.com/embed/" + trailerVideo?.key + "?&autoplay=1&mute=1&controls=0&modestbranding=1&fs=0&start=0&end=70&loop=1&playlist=" + trailerVideo?.key + "&vq=hd1080"}  
+          title="YouTube video player"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" 
+          referrerPolicy="strict-origin-when-cross-origin" 
+        />
       </div>
 
       {/**DETAIL PART*/}
-      <div className="w-full h-1/2 bg-[#141414] rounded-b-xl text-white p-4 flex flex-col gap-4">
+      <div className=" bg-[#141414] rounded-b-xl text-white p-6 flex flex-col gap-4">
 
         <div className="flex items-center justify-between">
           <div className="flex flex-row justify-between items-center gap-2">
@@ -45,19 +67,24 @@ const MovieInfoCard = ({movie_id, typeId}) => {
         
         <div className="flex items-center gap-2">
           <div className="flex items-center justify-center border border-white px-2">
-            <h2 className="text-xl/tight">A</h2>
+            <h2 className="text-xl/tight">{movieDetail.certification}</h2>
           </div>
           <div className="flex items-center justify-center">
-            <h2 className="text-lg">1h 15m </h2>
+            <h2 className="text-lg">{movieDetail?.duration}</h2>
           </div>
           <div className="flex items-center justify-center border border-white rounded-md px-2">
             <h2 className="text-sm/tight">HD </h2>
           </div>
         </div>
 
-        <div className="flex items-center gap-2">
-          <h2 className="text-lg font-roboto">Genre</h2>
-          <FontAwesomeIcon icon={faCircle} className="text-[5px] text-gray-500 "/>
+        <div className="flex flex-wrap items-center">
+          {movieDetail.genres.map((genre, index) => 
+            <div className="flex items-center gap-2">
+              {index !== 0 &&
+              <FontAwesomeIcon icon={faCircle} className="text-[5px] text-gray-500 ml-2"/>}
+              <h2 className="text-lg font-roboto">{genre.name}</h2>
+            </div>
+          )}   
         </div>
       </div>
     </div>
