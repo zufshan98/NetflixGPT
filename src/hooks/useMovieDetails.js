@@ -18,7 +18,7 @@ const useMovieDetails = (movie_id, typeId) => {
                 typeId === "movie"
                 ? "release_dates"
                 : "content_ratings"
-            }&language=en-US`,
+            }%2Cvideos&language=en-US`,
             API_OPTIONS
         );
         const json = await data.json();
@@ -53,7 +53,6 @@ const useMovieDetails = (movie_id, typeId) => {
             details: {
                 certification: certification,
                 duration: duration,
-                genres: json.genres,
                 info: json,
             },
         })); //add Details to moviesSlice

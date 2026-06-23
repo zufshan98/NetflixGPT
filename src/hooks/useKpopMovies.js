@@ -11,14 +11,28 @@ const useKpopMovies = () => {
     
     let allMovies = [];
 
-    for (let page = 1; page < 3; page++) {
-      const data = await fetch(`https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=${page}&sort_by=primary_release_date.desc&with_cast=1544084%20%7C%201544088%20%7C%201544086%20%7C%201544090%20%7C%201544092%20%7C%201544093%20%7C%201544095%20%7C%201897265%20%7C%201875840%20%7C%202021730%20&with_genres=99%20%2C%2010402&with_origin_country=KR`,API_OPTIONS);
+     
+    const movieData = await fetch("https://api.themoviedb.org/3/discover/movie?include_adult=false&include_video=false&language=en-US&page=1&sort_by=vote_average.desc&with_cast=1544084%7C1544088%7C1544086%7C1544090%7C1544092%7C1544093%7C1544095&with_genres=10402%2C99&with_origin_country=KR",API_OPTIONS);
+    const movie = await movieData.json();
+    movie.results = movie.results.map((item) => ({
+      ...item,
+      media_type: "movie",
+    }));
+    movie.results.sort((a, b) => new Date(b.release_date) - new Date(a.release_date));
+    console.log(movie.results);
 
-      const json = await data.json();
-      //console.log(json.results);
-      allMovies = [...allMovies, ...json.results];
-      //console.log(allMovies);
-    }
+    const seriesData = await fetch('https://api.themoviedb.org/3/discover/tv?include_adult=false&include_null_first_air_dates=false&language=en-US&page=1&sort_by=popularity.desc&with_companies=86824%7C288111&with_genres=10764%7C99%7C10767&with_origin_country=KR',API_OPTIONS);
+    const series = await seriesData.json();
+    series.results = series.results.map((item) => ({
+      ...item,
+      media_type: "tv",
+    }));
+    series.results.sort((a, b) => b.vote_count - a.vote_count);
+    console.log(series.results);
+
+    allMovies = [...allMovies, ...movie.results, ...series.results];
+    console.log(allMovies);
+ 
     //sorting the movies on the basis of highest rating
     //allMovies.sort((a, b) => b.vote_count - a.vote_count);
     //storing the fetched data in the moviesSlice(store)

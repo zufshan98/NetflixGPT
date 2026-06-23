@@ -1,9 +1,11 @@
 import { API_OPTIONS } from "../utils/constants";
-import { useEffect, useState } from "react";
+import { useEffect } from "react";
+import { addMovieBackdrop } from "../utils/moviesSlice";
+import { useDispatch } from "react-redux";
 
-const useMovieBackdrop = (typeId, movie_id) => {
+const useMovieBackdrop = (typeId, movie_id, posterPath) => {
 
-    const [ movieBackdropPath, setMovieBackdropPath ] = useState(null);
+    const dispatch = useDispatch();
 
     //console.log(typeId, movie_id);
 
@@ -18,24 +20,27 @@ const useMovieBackdrop = (typeId, movie_id) => {
         
         //if there's no backdrop image then use poster image 
         //console.log(backdrop.file_path);
-        if(!json) return;     
 
-        if (json.backdrops.length !== 0) {
+        let imagePath;
+
+        if (json?.backdrops?.length !== 0) {
             if (movie_id === 1628123)
-                setMovieBackdropPath(json.backdrops[2].file_path);
+                imagePath = json?.backdrops[4].file_path;
+            else if(movie_id === 1628116)
+                imagePath = json?.backdrops[2].file_path;
             else
-                setMovieBackdropPath(json.backdrops[0].file_path);
-        } else if (json.posters.length !== 0) {
-            setMovieBackdropPath(json.posters[0].file_path);
-        } else setMovieBackdropPath(null);
+                imagePath = json?.backdrops[0].file_path;
+        } else if (json?.posters.length !== 0) {
+            imagePath = json?.posters[0].file_path;
+        } else imagePath = posterPath;
         
+        dispatch(addMovieBackdrop({movie_id, images: imagePath}));
     };
 
     useEffect(() => {
         getMovieBackdrop();
     }, []);
 
-    return movieBackdropPath;
 };
 
 export default useMovieBackdrop;

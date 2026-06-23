@@ -49,7 +49,7 @@ const MovieList = ({typeId, title, movies }) => {
               index={index} 
               firstVisibleIndex={firstVisibleIndex}
               lastVisibleIndex={lastVisibleIndex}
-              typeId={typeId} 
+              typeId={movie.media_type || typeId} 
               movie_id={movie.id} 
               posterPath={movie.poster_path}
               setHoveredMovieId={setHoveredMovieId}

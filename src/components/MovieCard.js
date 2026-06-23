@@ -2,10 +2,13 @@ import { useState } from 'react';
 import useMovieBackdrop from '../hooks/useMovieBackdrop';
 import { IMG_CDN_URL } from '../utils/constants'
 import MovieInfoCard from './MovieInfoCard';
+import { useSelector } from 'react-redux';
 
 const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id, posterPath, setHoveredMovieId}) => {
 
   const [hover, setHover] = useState(false);
+
+  const movieBackdrop = useSelector(store => store.movies?.movieBackdrop[movie_id]);
 
   let hoverPosition;
 
@@ -17,10 +20,10 @@ const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id
     hoverPosition = "left-1/2 -translate-x-1/2";
   }
 
-  const backdropPath = useMovieBackdrop(typeId, movie_id);
-  //console.log(backdropPath);
+  useMovieBackdrop(typeId, movie_id, posterPath);
+  console.log(typeId, movie_id);
 
-  if(!posterPath) return null;
+  if(!movieBackdrop) return;
   
   return (
     <div className={hover ? "relative z-30" : "relative z-20"}  
@@ -35,7 +38,7 @@ const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id
     >
 
       <div className='w-[231px] h-[132px]'>
-        <img className='w-full h-full object-fill rounded-[4px]' src={IMG_CDN_URL + (!backdropPath ? posterPath : backdropPath)} alt="movie poster" />
+        <img className='w-full h-full object-fill rounded-[4px]' src={IMG_CDN_URL + movieBackdrop} alt="movie poster" />
       </div>
       
 

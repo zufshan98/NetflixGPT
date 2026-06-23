@@ -8,7 +8,7 @@ const moviesSlice = createSlice({
         recentlyAddedKdramas: null,
         nowPlayingMovies: null,
         movieLogo: null,
-        movieBackdrop:null,
+        movieBackdrop:{},
         trailerVideo: {},
         movieDetails: {},
         topRatedMovies: null,
@@ -32,7 +32,8 @@ const moviesSlice = createSlice({
             state.movieLogo = action.payload;
         },
         addMovieBackdrop: (state, action) => {
-            state.movieBackdrop = action.payload;
+            const { movie_id, images} = action.payload;
+            state.movieBackdrop[movie_id] = images;
         },
         addTrailerVideo: (state, action) => {
             const { movie_id, trailer} = action.payload;
