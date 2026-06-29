@@ -21,14 +21,22 @@ const useEastAsianMovies = () => {
       //console.log(allMovies);
       
     }
+
+    //to remove duplicate data
+    let uniqueMovies = allMovies.filter(
+      (movie, index, self) =>
+        index === self.findIndex(m => m.id === movie.id)
+    );
+
     //sorting the movies on the basis of popularity
-    allMovies.sort((a, b) => b.popularity - a.popularity);
-    if (allMovies.length >= 30) {
-      allMovies = allMovies.slice(0, 30);
+    uniqueMovies.sort((a, b) => b.popularity - a.popularity);
+
+    if (uniqueMovies.length >= 30) {
+      uniqueMovies = uniqueMovies.slice(0, 30);
       //console.log(allMovies);
     }
     //storing the fetched data in the moviesSlice(store)
-    dispatch(addEastAsianMovies(allMovies));
+    dispatch(addEastAsianMovies(uniqueMovies));
   };
 
   useEffect(() => {

@@ -1,26 +1,27 @@
 import { useSelector } from "react-redux";
 import MovieTitle from "./MovieTitle";
 import MovieBackground from "./MovieBackground";
+import MovieInfoContainer from "./MovieInfoContainer";
 
 
 const HeroMovieContainer = () => {
   //getting the first row of movie list data from the store
   const movies = useSelector((store) => store?.movies?.kpopMovies);
+  
 
   //1st time the nowPlayingMovies is null, if its null then dont render 
   if(movies === null) return; //early return (!movies)
 
-  const heroMovie = movies[0]; //1st movie in the list
+  const heroMovie = movies[1]; //1st movie in the list
   //console.log(heroMovie);
 
-  const { name, overview, id } = heroMovie;
+  const { id, overview, media_type } = heroMovie;
 
   return (
     <div className="relative h-screen overflow-hidden">
 
-      <MovieTitle movie_id={id} title={name} overview={overview} />
-      <MovieBackground movie_id={id} />
-      
+      <MovieTitle movie_id={id} overview={overview} media_type={media_type} />
+      <MovieBackground movie_id={id} media_type={media_type} />
       
     </div>
   );

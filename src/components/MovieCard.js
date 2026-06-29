@@ -1,8 +1,9 @@
 import { useState } from 'react';
 import useMovieBackdrop from '../hooks/useMovieBackdrop';
 import { IMG_CDN_URL } from '../utils/constants'
-import MovieInfoCard from './MovieInfoCard';
+import HoverCard from './HoverCard';
 import { useSelector } from 'react-redux';
+import { motion } from "framer-motion";
 
 const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id, posterPath, setHoveredMovieId}) => {
 
@@ -21,7 +22,7 @@ const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id
   }
 
   useMovieBackdrop(typeId, movie_id, posterPath);
-  console.log(typeId, movie_id);
+  //console.log(typeId, movie_id);
 
   if(!movieBackdrop) return;
   
@@ -38,15 +39,22 @@ const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id
     >
 
       <div className='w-[231px] h-[132px]'>
-        <img className='w-full h-full object-fill rounded-[4px]' src={IMG_CDN_URL + movieBackdrop} alt="movie poster" />
+        <img className='w-full h-full object-fill rounded-[4px]' src={IMG_CDN_URL + movieBackdrop || IMG_CDN_URL + posterPath} alt="movie poster" />
       </div>
       
 
-      {hover && (
-        <div className={`absolute -top-10 left-0 z-60 bg-red-500/30 rounded-xl ${hoverPosition}`}>
-          <MovieInfoCard movie_id={movie_id} typeId={typeId} />
-        </div>
-      )}
+        {hover && (
+          <div className={`absolute -top-10 z-60 rounded-xl origin-center ${hoverPosition}`}>
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.92, y: 20 }}
+              animate={{ opacity: 1, scale: 1, y: 0 }}
+              transition={{ duration: 0.25, delay: 0.25, ease: "easeOut" }}
+            >
+              <HoverCard movie_id={movie_id} typeId={typeId} />
+            </motion.div>
+          </div>
+          )}
+
     </div>
   );
 };

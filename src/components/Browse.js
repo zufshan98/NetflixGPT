@@ -10,11 +10,13 @@ import HeroMovieContainer from './HeroMovieContainer';
 import SecondaryContainer from './SecondaryContainer';
 import GptSearchContainer from './GptSearchContainer';
 import useKpopMovies from '../hooks/useKpopMovies';
+import MovieInfoContainer from './MovieInfoContainer';
 
 
 const Browse = () => {
 
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
+  const showMoreInfo = useSelector((store) => store?.movies?.showMoreInfo);
   
   useKpopMovies();
   useEastAsianMovies();
@@ -25,7 +27,8 @@ const Browse = () => {
   useOnTheAirTvSeries();
 
   return (
-    <div className='overflow-x-hidden'>
+    <div className='overflow-x-hidden relative'>
+      
       <Header />
       {showGptSearch ? (
         <GptSearchContainer />
@@ -33,6 +36,13 @@ const Browse = () => {
         <>
           <HeroMovieContainer />
           <SecondaryContainer />
+
+          {showMoreInfo.open && (
+            <MovieInfoContainer
+              movie_id={showMoreInfo.movie_id}
+              typeId={showMoreInfo.typeId}
+            />
+          )}
         </>
       )}
       

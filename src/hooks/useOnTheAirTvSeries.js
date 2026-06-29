@@ -18,8 +18,13 @@ const useOnTheAirTvSeries = () => {
       allMovies = [...allMovies, ...json.results];
     }
     
-    //storing the fetched data in the moviesSlice(store)
-    dispatch(addOnTheAirTvSeries(allMovies.slice(0, 30)));
+    //to remove duplicate data
+    const uniqueMovies = allMovies.filter(
+      (movie, index, self) =>
+        index === self.findIndex(m => m.id === movie.id)
+    );
+    
+    dispatch(addOnTheAirTvSeries(uniqueMovies.slice(0, 30)));
   };
 
   useEffect(() => {

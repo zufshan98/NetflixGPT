@@ -23,8 +23,14 @@ const useNowPlayingMovies = () => {
       allMovies = [...allMovies, ...result];
       //console.log(allMovies);
     }
+
+    //to remove duplicate data
+    const uniqueMovies = allMovies.filter(
+      (movie, index, self) =>
+        index === self.findIndex(m => m.id === movie.id)
+    );
     //storing the fetched data in the moviesSlice(store)
-    dispatch(addNowPlayingMovies(allMovies.slice(0, 30)));
+    dispatch(addNowPlayingMovies(uniqueMovies.slice(0, 30)));
   };
 
   useEffect(() => {

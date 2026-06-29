@@ -41,7 +41,7 @@ const MovieList = ({typeId, title, movies }) => {
           <span className="material-symbols-outlined text-6xl hover:scale-150">keyboard_arrow_left</span>
         </button>
 
-        <div className='flex gap-1 transition-transform duration-500 overflow-visible relative z-20' style={{transform: `translateX(${translateX}px)`}}>  
+        <div className='flex gap-1 transition-transform duration-500 overflow-visible relative z-20 cursor-pointer' style={{transform: `translateX(${translateX}px)`}}>  
 
           {movies?.map((movie, index) => (
             <MovieCard 

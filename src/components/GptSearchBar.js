@@ -8,7 +8,9 @@ import { addGptMovieResult } from "../utils/gptSlice";
 const GptSearchBar = () => {
 
   const dispatch = useDispatch();
+
   const langKey = useSelector((store) => store.config.lang);
+  
   const searchText = useRef(null);
 
   //Search movie in TBDB
