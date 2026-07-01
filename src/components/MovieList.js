@@ -1,7 +1,7 @@
 import { useState } from 'react';
 import MovieCard from './MovieCard';
 
-const MovieList = ({typeId, title, movies }) => {
+const MovieList = ({typeId, title, movies, priority = false }) => {
   //console.log(movies);
 
   const [currentPage, setCurrentPage] = useState(0); //To stop the scroll when there is no card.
@@ -13,6 +13,7 @@ const MovieList = ({typeId, title, movies }) => {
 
   const firstVisibleIndex = currentPage * visibleCount;
   const lastVisibleIndex = firstVisibleIndex + visibleCount - 1;
+  
   
   const scrollRight = () => {
     if (currentPage >= 4) return;
@@ -53,6 +54,11 @@ const MovieList = ({typeId, title, movies }) => {
               movie_id={movie.id} 
               posterPath={movie.poster_path}
               setHoveredMovieId={setHoveredMovieId}
+              priority={ 
+                priority &&
+                index >= firstVisibleIndex &&
+                index <= lastVisibleIndex + 1
+              }
             />
           ))}
           

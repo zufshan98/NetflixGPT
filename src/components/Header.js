@@ -57,7 +57,7 @@ const Header = () => {
   };
 
   return (
-    <div className={`w-full fixed z-10 ${user ? 'pl-11' : 'pl-32'} py-3 bg-gradient-to-b from-black flex justify-between items-center`}>
+    <div className={`w-full fixed z-50 ${user ? 'pl-11' : 'pl-32'} py-3 bg-gradient-to-b from-black flex justify-between items-center`}>
 
       <img className={user ? 'w-32 h-12' : 'w-48 h-20'} 
       src={LOGO} alt='netflix-logo'/>

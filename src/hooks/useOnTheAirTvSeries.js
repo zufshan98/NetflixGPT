@@ -1,11 +1,14 @@
 import { API_OPTIONS } from '../utils/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addOnTheAirTvSeries } from '../utils/moviesSlice';
 import { useEffect } from 'react';
 
 const useOnTheAirTvSeries = () => {
 //Fetch data from TMDB API and update store
   const dispatch = useDispatch();
+
+  const onTheAirTvSeries = useSelector(store => store.movies.onTheAirTvSeries);
+
 
   const getOnTheAirTvSeries = async () => {
 
@@ -29,7 +32,7 @@ const useOnTheAirTvSeries = () => {
 
   useEffect(() => {
     //make an API call
-    getOnTheAirTvSeries();
+    !onTheAirTvSeries && getOnTheAirTvSeries();
   }, []);
 };
 

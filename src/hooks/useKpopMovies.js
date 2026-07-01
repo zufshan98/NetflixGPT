@@ -1,12 +1,14 @@
 import { API_OPTIONS } from '../utils/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addKpopMovies } from '../utils/moviesSlice';
 import { useEffect } from 'react';
-import useMovieBackdrop from './useMovieBackdrop';
 
 const useKpopMovies = () => {
 //Fetch data from TMDB API and update store
   const dispatch = useDispatch();
+
+  const kpopMovies = useSelector(store => store.movies.kpopMovies);
+
 
   const getKpopMovies = async () => {
     
@@ -41,16 +43,13 @@ const useKpopMovies = () => {
       (movie, index, self) =>
         index === self.findIndex(m => m.id === movie.id)
     );
- 
-    //sorting the movies on the basis of highest rating
-    //allMovies.sort((a, b) => b.vote_count - a.vote_count);
 
     dispatch(addKpopMovies(uniqueMovies.slice(0, 30)));
   };
 
   useEffect(() => {
     //make an API call
-    getKpopMovies();
+    !kpopMovies && getKpopMovies();
   }, []);
 };
 

@@ -7,7 +7,6 @@ const MovieBackground = ({movie_id}) => {
 
   const heroMovie = useSelector(store => store.movies?.heroMovie); //getting trailer from the store
 
-  //useMovieBackdrop(movie_id);
   if(!heroMovie) return;
   console.log(heroMovie?.videos?.results);
 

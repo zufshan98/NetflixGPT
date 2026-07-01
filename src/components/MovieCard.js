@@ -4,8 +4,9 @@ import { IMG_CDN_URL } from '../utils/constants'
 import HoverCard from './HoverCard';
 import { useSelector } from 'react-redux';
 import { motion } from "framer-motion";
+import { useInView } from "react-intersection-observer";
 
-const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id, posterPath, setHoveredMovieId}) => {
+const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id, posterPath, setHoveredMovieId, priority}) => {
 
   const [hover, setHover] = useState(false);
 
@@ -21,13 +22,18 @@ const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id
     hoverPosition = "left-1/2 -translate-x-1/2";
   }
 
-  useMovieBackdrop(typeId, movie_id, posterPath);
-  //console.log(typeId, movie_id);
+  const { ref, inView } = useInView({
+    triggerOnce: true,
+    rootMargin: "200px",
+  });
 
-  if(!movieBackdrop) return;
+  useMovieBackdrop(typeId, movie_id, posterPath, priority || inView);
+  console.log(inView);
+
+  //if(!movieBackdrop) return;
   
   return (
-    <div className={hover ? "relative z-30" : "relative z-20"}  
+    <div ref={ref} className={hover ? "relative z-30" : "relative z-20"}  
       onMouseEnter={() => {
         setHover(true); 
         setHoveredMovieId(movie_id);
@@ -39,7 +45,7 @@ const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id
     >
 
       <div className='w-[231px] h-[132px]'>
-        <img className='w-full h-full object-fill rounded-[4px]' src={IMG_CDN_URL + movieBackdrop || IMG_CDN_URL + posterPath} alt="movie poster" />
+        <img className='w-full h-full object-fill rounded-[4px]' src={IMG_CDN_URL + (movieBackdrop || posterPath)} alt="movie poster" />
       </div>
       
 

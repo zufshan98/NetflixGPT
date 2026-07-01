@@ -9,6 +9,9 @@ const useSimilarMovies = (movie_id, typeId) => {
 
     const dispatch = useDispatch();
 
+    const similarMovies = useSelector(store => store.movies.similarMovies);
+
+
     //console.log(detail);
     
 
@@ -25,7 +28,7 @@ const useSimilarMovies = (movie_id, typeId) => {
     };
 
     useEffect(() => {
-        getSimilarMovies();
+        !similarMovies && getSimilarMovies();
     }, []);
 
 };

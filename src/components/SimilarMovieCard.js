@@ -10,7 +10,7 @@ const SimilarMovieCard = ({movie_id, typeId, release_date, image, posterPath, ov
 
   console.log(movie_id, typeId);
 
-  useMovieBackdrop(typeId, movie_id);
+  useMovieBackdrop(typeId, movie_id, posterPath, true);
   const details = useMovieDetails(movie_id, typeId);
   console.log(details);
 

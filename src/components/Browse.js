@@ -18,9 +18,9 @@ const Browse = () => {
   const showGptSearch = useSelector((store) => store.gpt.showGptSearch);
   const showMoreInfo = useSelector((store) => store?.movies?.showMoreInfo);
   
+  useRecentlyAddedKdramas();
   useKpopMovies();
   useEastAsianMovies();
-  useRecentlyAddedKdramas();
   useNowPlayingMovies();
   useTopRatedMovies();
   usePopularKdramas();

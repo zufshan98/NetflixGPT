@@ -38,7 +38,7 @@ const MovieVideo = ({movie_id, typeId}) => {
       }}
     > 
 
-      <div className="w-[110vw] h-[50%] -left-4 -right-4 -bottom-4 absolute bg-gradient-to-t from-[#181818] via-[#181818]/70 to-[#181818]/20 blur-lg ">
+      <div className="w-full h-[100%] inset-x-0 -bottom-4 absolute bg-gradient-to-t from-[#181818] to-transparent">
       </div>
 
       <div className={`w-[30%] absolute ${showMoreInfo.open ? 'bottom-[28%] left-14' :'bottom-[10%] left-5'}`}>

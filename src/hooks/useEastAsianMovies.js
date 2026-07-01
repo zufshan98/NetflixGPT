@@ -1,11 +1,13 @@
 import { API_OPTIONS } from '../utils/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addEastAsianMovies } from '../utils/moviesSlice';
 import { useEffect } from 'react';
 
 const useEastAsianMovies = () => {
 //Fetch data from TMDB API and update store
   const dispatch = useDispatch();
+
+  const eastAsianMovies = useSelector(store => store.movies.eastAsianMovies);
 
   const getEastAsianMovies = async () => {
 
@@ -41,7 +43,7 @@ const useEastAsianMovies = () => {
 
   useEffect(() => {
     //make an API call
-    getEastAsianMovies();
+    !eastAsianMovies && getEastAsianMovies();
   }, []);
 };
 

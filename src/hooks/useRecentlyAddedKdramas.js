@@ -1,11 +1,14 @@
 import { API_OPTIONS } from '../utils/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addRecentlyAddedKdramas } from '../utils/moviesSlice';
 import { useEffect } from 'react';
 
 const useRecentlyAddedKdramas = () => {
 //Fetch data from TMDB API and update store
   const dispatch = useDispatch();
+
+  const recentlyAddedKdramas = useSelector(store => store.movies.recentlyAddedKdramas);
+
 
   const getRecentlyAddedKdramas = async () => {
 
@@ -31,7 +34,7 @@ const useRecentlyAddedKdramas = () => {
 
   useEffect(() => {
     //make an API call
-    getRecentlyAddedKdramas();
+    !recentlyAddedKdramas && getRecentlyAddedKdramas();
   }, []);
 };
 

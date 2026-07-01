@@ -11,7 +11,7 @@ const useMovieDetails = (movie_id, typeId) => {
 
     const showMoreInfo = useSelector(store => store.movies?.showMoreInfo);
 
-    console.log(movie_id,typeId);
+    //console.log(movie_id,typeId);
 
     const getMovieDetails = async () => { 
 
@@ -38,7 +38,7 @@ const useMovieDetails = (movie_id, typeId) => {
                     country => country.iso_3166_1 === "IN"
                 );
 
-        console.log(inRelease);
+        //console.log(inRelease);
         
         let certification, duration;
 

@@ -1,11 +1,14 @@
 import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { addHeroMovie } from "../utils/moviesSlice";
 
 const useHeroMovie = (movie_id, media_type) => {
    
     const dispatch = useDispatch();
+
+    const heroMovie = useSelector(store => store.movies.heroMovie);
+
 
     //console.log(movie_id);
 
@@ -28,7 +31,7 @@ const useHeroMovie = (movie_id, media_type) => {
     };
 
     useEffect(() => {
-        getHeroMovie();
+        !heroMovie && getHeroMovie();
     }, []);
 };
 

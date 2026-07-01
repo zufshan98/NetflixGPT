@@ -1,11 +1,14 @@
 import { API_OPTIONS } from '../utils/constants';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { addPopularKdramas } from '../utils/moviesSlice';
 import { useEffect } from 'react';
 
 const usePopularKdramas = () => {
 //Fetch data from TMDB API and update store
   const dispatch = useDispatch();
+
+  const popularKdramas = useSelector(store => store.movies.popularKdramas);
+
 
   const getPopularKdramas = async () => {
 
@@ -29,7 +32,7 @@ const usePopularKdramas = () => {
 
   useEffect(() => {
     //make an API call
-    getPopularKdramas();
+    !popularKdramas && getPopularKdramas();
   }, []);
 };
 
