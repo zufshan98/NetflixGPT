@@ -90,7 +90,7 @@ const Login = () => {
 
       <div className='absolute inset-0 bg-gradient-to-t from-black/90 via-black/70 to-black/50'></div>
 
-      <form onSubmit={(e) => e.preventDefault()} className='bg-black/60 absolute p-12 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-3/12 text-white rounded-lg '>
+      <form onSubmit={(e) => e.preventDefault()} className='bg-black/60 absolute p-12 top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[80vw] sm:w-[70vw] md:w-[50vw] lg:w-[40vw] xl:w-[30vw] text-white rounded-lg '>
         <h1 className='font-bold text-3xl py-4'>{isSignInForm ? "Sign In" : "Sign Up"}</h1>
 
         {!isSignInForm && (

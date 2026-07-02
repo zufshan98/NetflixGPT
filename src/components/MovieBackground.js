@@ -11,7 +11,7 @@ const MovieBackground = ({movie_id}) => {
   console.log(heroMovie?.videos?.results);
 
   return (
-    <div className="h-screen w-screen overflow-hidden pointer-events-none bg-cover"
+    <div className="h-[273px] sm:h-[48vh] md:h-[65vh] lg:h-[80vh] xl:h-screen w-screen overflow-hidden pointer-events-none bg-cover"
       style={{
         backgroundImage: `url(${IMG_CDN_URL + heroMovie?.images?.backdrops[10]?.file_path})`,
       }}
@@ -19,7 +19,7 @@ const MovieBackground = ({movie_id}) => {
       {movie_id === 1628123 && (
       <video
         src="https://occ-0-6245-3647.1.nflxso.net/so/soa4/078/2036964907553793024.mp4?v=1&e=1782287236&t=LCYcIGXpByssTLtiYBLnJg1ZfTs"
-        className="absolute left-0 top-0 w-full h-full object-cover"
+        className="absolute left-0 top-0 w-full md:h-full object-cover"
         autoPlay
         muted
         loop
@@ -30,7 +30,7 @@ const MovieBackground = ({movie_id}) => {
       {movie_id === 1628116 && (
       <video
         src="https://occ-0-6245-3647.1.nflxso.net/so/soa3/768/2027156192297960705.mp4?v=1&e=1782288111&t=jLSCQ_kwUiRJsOmdwFZTxROpo3U"
-        className="absolute left-0 top-0 w-full h-full object-cover"
+        className="absolute left-0 top-0 w-full md:h-full object-cover"
         autoPlay
         muted
         loop

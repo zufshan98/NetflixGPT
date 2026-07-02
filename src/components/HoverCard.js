@@ -14,7 +14,7 @@ const HoverCard = ({movie_id, typeId}) => {
   //console.log(movieDetail.genres);
   return (
     
-    <div className="w-[350px] my-5 relative z-80 -top-28 rounded-lg flex flex-col shadow-md shadow-black">
+    <div className="w-[330px] md:w-[350px] my-5 relative z-80 -top-28 rounded-lg flex flex-col shadow-md shadow-black">
 
       {/**VIDEO PART*/}
       <MovieVideo movie_id={movie_id} typeId={typeId}/>

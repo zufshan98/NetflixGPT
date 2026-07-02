@@ -57,15 +57,15 @@ const Header = () => {
   };
 
   return (
-    <div className={`w-full fixed z-50 ${user ? 'pl-11' : 'pl-32'} py-3 bg-gradient-to-b from-black flex justify-between items-center`}>
+    <div className={`w-full fixed z-50 ${user ? 'pl-4 md:pl-8 lg:pl-11' : 'pl-20 md:pl-28 lg:pl-32'} py-1 md:py-3 bg-gradient-to-b from-black flex justify-between items-center`}>
 
-      <img className={user ? 'w-32 h-12' : 'w-48 h-20'} 
+      <img className={user ? 'w-16 sm:w-20 md:w-32 h-6 sm:h-8 md:h-12' : 'w-32 md:w-40 lg:w-48 h-12 md:h-16 lg:h-20'} 
       src={LOGO} alt='netflix-logo'/>
 
       
 
       {user && (
-        <div className='flex items-center justify-center gap-8 px-16'>
+        <div className='flex items-center justify-center gap-4 md:gap-8 px-6 md:px-16'>
 
           {showGptSearch && (
             <select className='font-sans bg-transparent text-white border border-black/70 rounded-md' onChange={handleLanguageChange}>
@@ -79,9 +79,14 @@ const Header = () => {
 
           <button className=' text-white rounded-lg font-sans hover:text-white/60' onClick={handleGptSearchClick}>{showGptSearch ? "Home" : "Gpt Search"}</button>
 
-          <img className='w-9 rounded-lg' src={user?.photoURL} alt='usericon' />
+          <div onClick={handleSignOut} className='flex items-center justify-center rounded-md text-white cursor-pointer'>
+            <span class="material-symbols-outlined">
+              logout
+            </span>
+          </div>
 
-          <button onClick={handleSignOut} className='px-2 py-1 bg-red-600 rounded-md text-white font-sans'>Sign Out</button>
+          <img className='w-8 md:w-9 rounded-[4px]' src={user?.photoURL} alt='usericon' />
+
         </div>
       )}
 

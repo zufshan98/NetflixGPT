@@ -15,9 +15,9 @@ const SimilarMovieCard = ({movie_id, typeId, release_date, image, posterPath, ov
   console.log(details);
 
   return (
-    <div className="flex flex-col w-[237px] h-[355px]">
+    <div className="flex flex-col w-[170px] md:w-[196px] lg:w-[237px] h-[355px]">
 
-        <div className="w-full h-[133px] relative">
+        <div className="w-full h-[100px] md:h-[115px] lg:h-[133px] relative">
             <img className="w-full h-full rounded-t-md" src={IMG_CDN_URL + (similarMovieImage ?? posterPath)} alt="movie poster"/>
 
             <div className="absolute right-0 top-0 h-12 w-24 bg-gradient-to-bl from-black via-black/60 to-black/10 blur-md">

@@ -18,7 +18,7 @@ const HeroMovieContainer = () => {
   const { id, overview, media_type } = heroMovie;
 
   return (
-    <div className="relative h-screen overflow-hidden">
+    <div className="relative h-3/12 xl:h-screen overflow-hidden">
 
       <MovieTitle movie_id={id} overview={overview} media_type={media_type} />
       <MovieBackground movie_id={id} media_type={media_type} />

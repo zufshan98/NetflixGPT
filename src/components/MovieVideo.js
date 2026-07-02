@@ -32,7 +32,7 @@ const MovieVideo = ({movie_id, typeId}) => {
   //console.log(movieDetail.genres);
 
   return (
-    <div className={`${showMoreInfo.open ? 'h-[480px]' : 'h-[195px]'} w-full bg-cover rounded-t-lg relative`}
+    <div className={`${showMoreInfo.open ? 'h-[260px] md:h-[400px] lg:h-[480px]' : 'h-[195px]'} w-full bg-cover rounded-t-md md:rounded-t-lg relative`}
         style={{
         backgroundImage: `url(${IMG_CDN_URL + movieBackdrop})`,
       }}
@@ -41,33 +41,33 @@ const MovieVideo = ({movie_id, typeId}) => {
       <div className="w-full h-[100%] inset-x-0 -bottom-4 absolute bg-gradient-to-t from-[#181818] to-transparent">
       </div>
 
-      <div className={`w-[30%] absolute ${showMoreInfo.open ? 'bottom-[28%] left-14' :'bottom-[10%] left-5'}`}>
+      <div className={`w-[30%] absolute ${showMoreInfo.open ? 'bottom-[35%] md:bottom-[28%] left-14' :'bottom-[10%] left-5'}`}>
         {!movieDetail?.info?.images?.logos?.[0]?.file_path
           ? <h2 className="text-white text-lg font-serif">{movieDetail?.info?.name || movieDetail?.info?.title}</h2> 
           : <img className="w-ful" alt="logo" src={IMG_CDN_URL + movieDetail?.info?.images?.logos?.[0]?.file_path}/>
         }
       </div>
 
-       <div className={`w-10 h-10 flex items-center justify-center border border-[#777] rounded-full cursor-pointer absolute ${showMoreInfo.open ? 'top-[79.8%] right-10' : 'top-[74.8%] right-8'}`}>
-          <span className="material-symbols-outlined text-[#777]">no_sound</span>
+       <div className={`w-6 md:w-10 h-6 md:h-10 flex items-center justify-center border border-[#777] rounded-full cursor-pointer absolute ${showMoreInfo.open ? 'top-[70%] md:top-[79.8%] right-10' : 'top-[74.8%] right-8'} bg-black-500/80`}>
+          <span className="material-symbols-outlined text-[#777] text-xl md:text-4xl">no_sound</span>
         </div>
       
       {showMoreInfo.open && (
-        <div className= 'flex items-center justify-between absolute top-[79.8%] left-14 right-14'>
+        <div className= 'flex items-center justify-between absolute top-[70%] md:top-[79.8%] left-14 right-14'>
 
             <div className="flex flex-row justify-between items-center gap-2">
 
-              <button className="bg-white hover:bg-opacity-80 rounded-[4px] w-[125px] h-[47px] text-black text-lg flex items-center justify-center font-roboto font-medium gap-2">
-                <FontAwesomeIcon icon={faPlay} className="text-[28px] -ml-3"/>
-                  Play
+              <button className="bg-white hover:bg-opacity-80 rounded-[4px] w-[90px] md:w-[125px] h-[20px] md:h-[30px] lg:h-[47px] text-black text-lg flex items-center justify-center font-roboto font-medium gap-2">
+                <FontAwesomeIcon icon={faPlay} className="text-[14px] md:text-[20px] lg:text-[28px] -ml-3"/>
+                  <span className="font-roboto font-medium text-[10px] sm:text-xs md:text-sm lg:text-lg">Play</span>
               </button>
 
-              <div className="w-10 h-10 border-2 border-[#777] rounded-full flex items-center justify-center">
-                <span className="material-symbols-outlined text-3xl text-white">add</span>
+              <div className="w-6 md:w-8 lg:w-10 h-6 md:h-8 lg:h-10 border-2 border-[#777] rounded-full flex items-center justify-center">
+                <span className="material-symbols-outlined text-lg md:text-2xl lg:text-3xl text-white">add</span>
               </div>
 
-              <div className="w-10 h-10 border-2 border-[#777] rounded-full flex items-center justify-center">
-                <FontAwesomeIcon icon={faThumbsUp} className="text-lg ml-1 text-white"/>
+              <div className="w-6 md:w-8 lg:w-10 h-6 md:h-8 lg:h-10 border-2 border-[#777] rounded-full flex items-center justify-center">
+                <FontAwesomeIcon icon={faThumbsUp} className="text-xs md:text-base lg:text-lg md:ml-1 text-white"/>
               </div>
             </div>
 

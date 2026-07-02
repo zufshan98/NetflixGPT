@@ -30,7 +30,7 @@ const MovieInfoContainer = ({movie_id, typeId}) => {
 
     <div className="fixed inset-0 z-50 bg-black/70 overflow-y-auto no-scrollbar overscroll-contain">
 
-      <div className="relative mx-auto my-8 w-[56%] bg-[#181818] rounded-t-lg overflow-hidden">
+      <div className="relative mx-auto my-8 w-[94%] lg:w-[56%] bg-[#181818] rounded-t-lg overflow-hidden">
       
       <div className="absolute z-10 right-5 top-3 w-9 h-9 bg-[#181818] text-white rounded-full flex items-center justify-center cursor-pointer" onClick={handleMoreInfoViewClose}>
         <span className="material-symbols-outlined text-3xl">close</span>

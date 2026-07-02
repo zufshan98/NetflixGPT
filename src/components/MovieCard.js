@@ -6,7 +6,7 @@ import { useSelector } from 'react-redux';
 import { motion } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 
-const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id, posterPath, setHoveredMovieId, priority}) => {
+const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id, posterPath, setHoveredMovieId, priority, cardWidth}) => {
 
   const [hover, setHover] = useState(false);
 
@@ -17,7 +17,7 @@ const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id
   if (index === firstVisibleIndex) {
     hoverPosition = "left-0";
   } else if (index === lastVisibleIndex) {
-    hoverPosition = "left-1/4 -translate-x-1/2";
+    hoverPosition = "-left-7 md:left-1/4 -translate-x-1/2";
   } else {
     hoverPosition = "left-1/2 -translate-x-1/2";
   }
@@ -44,8 +44,12 @@ const MovieCard = ({index, firstVisibleIndex, lastVisibleIndex, typeId, movie_id
       }}
     >
 
-      <div className='w-[231px] h-[132px]'>
-        <img className='w-full h-full object-fill rounded-[4px]' src={IMG_CDN_URL + (movieBackdrop || posterPath)} alt="movie poster" />
+      <div className=' h-[90px] sm:h-[127px] md:h-[130px] xl:h-[132px]'
+        style={{ width: `${cardWidth}px` }}
+      > {console.log(cardWidth)}
+
+        <img className='w-full h-full object-fill lg:rounded-[2px] xl:rounded-[4px]' src={IMG_CDN_URL + (movieBackdrop || posterPath)} alt="movie poster" />
+
       </div>
       
 
