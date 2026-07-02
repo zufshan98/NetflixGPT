@@ -1,7 +1,6 @@
 import { useSelector } from "react-redux";
 import MovieTitle from "./MovieTitle";
 import MovieBackground from "./MovieBackground";
-import MovieInfoContainer from "./MovieInfoContainer";
 
 
 const HeroMovieContainer = () => {

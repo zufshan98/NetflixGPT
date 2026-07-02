@@ -1,9 +1,6 @@
-
-import { useSelector } from "react-redux";
 import useMovieDetails from "../hooks/useMovieDetails";
 import HoverCardDetails from "./HoverCardDetails";
 import MovieVideo from "./MovieVideo";
-import { IMG_CDN_URL } from "../utils/constants";
 
 const HoverCard = ({movie_id, typeId}) => {
 
