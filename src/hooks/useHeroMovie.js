@@ -32,6 +32,7 @@ const useHeroMovie = (movie_id, media_type) => {
 
     useEffect(() => {
         !heroMovie && getHeroMovie();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 };
 

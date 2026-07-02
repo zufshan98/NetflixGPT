@@ -33,6 +33,7 @@ const useTopRatedMovies = () => {
   useEffect(() => {
     //make an API call
     !topRatedMovies && getTopRatedMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 

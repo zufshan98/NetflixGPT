@@ -33,6 +33,7 @@ const useOnTheAirTvSeries = () => {
   useEffect(() => {
     //make an API call
     !onTheAirTvSeries && getOnTheAirTvSeries();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 

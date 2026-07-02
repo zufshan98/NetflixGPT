@@ -34,6 +34,7 @@ const usePopularKdramas = () => {
     //make an API call
     !popularKdramas && getPopularKdramas();
   }, []);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
 };
 
 export default usePopularKdramas;

@@ -35,7 +35,7 @@ const useEastAsianMovies = () => {
 
     if (uniqueMovies.length >= 30) {
       uniqueMovies = uniqueMovies.slice(0, 30);
-      //console.log(allMovies);
+      // eslint-disable-next-line react-hooks/exhaustive-deps
     }
     //storing the fetched data in the moviesSlice(store)
     dispatch(addEastAsianMovies(uniqueMovies));

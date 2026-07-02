@@ -56,6 +56,7 @@ const useMovieBackdrop = (typeId, movie_id, posterPath, enabled = false) => {
 
     useEffect(() => {
         getMovieBackdrop();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [typeId, movie_id, enabled]);
 
 };

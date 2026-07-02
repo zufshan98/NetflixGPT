@@ -35,6 +35,7 @@ const useRecentlyAddedKdramas = () => {
   useEffect(() => {
     //make an API call
     !recentlyAddedKdramas && getRecentlyAddedKdramas();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 

@@ -50,6 +50,7 @@ const useKpopMovies = () => {
   useEffect(() => {
     //make an API call
     !kpopMovies && getKpopMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 

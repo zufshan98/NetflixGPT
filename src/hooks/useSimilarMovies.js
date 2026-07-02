@@ -1,6 +1,5 @@
 import { useEffect } from "react";
 import { API_OPTIONS } from "../utils/constants";
-import useMovieDetails from "./useMovieDetails";
 import { useDispatch, useSelector } from "react-redux";
 import { addSimilarMovies } from "../utils/moviesSlice";
 
@@ -29,6 +28,7 @@ const useSimilarMovies = (movie_id, typeId) => {
 
     useEffect(() => {
         !similarMovies && getSimilarMovies();
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
 };

@@ -19,6 +19,6 @@ const firebaseConfig = {
 
 // Initialize Firebase
 const app = initializeApp(firebaseConfig);
-const analytics = getAnalytics(app);
+getAnalytics(app);
 
 export const auth = getAuth(); //for every authentication work, we need this, that's why we have kept it in central
