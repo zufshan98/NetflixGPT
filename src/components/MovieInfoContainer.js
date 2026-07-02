@@ -1,11 +1,9 @@
 import { useDispatch, useSelector } from "react-redux";
-import MovieBackground from "./MovieBackground";
 import MovieDetails from "./MovieDetails";
 import MovieVideo from "./MovieVideo";
 import { setMoreInfoView } from "../utils/moviesSlice";
 import SimilarMovieCard from "./SimilarMovieCard";
 import useSimilarMovies from "../hooks/useSimilarMovies";
-import useMovieDetails from "../hooks/useMovieDetails";
 
 const MovieInfoContainer = ({movie_id, typeId}) => {
 

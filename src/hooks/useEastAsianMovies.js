@@ -44,6 +44,7 @@ const useEastAsianMovies = () => {
   useEffect(() => {
     //make an API call
     !eastAsianMovies && getEastAsianMovies();
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 };
 
